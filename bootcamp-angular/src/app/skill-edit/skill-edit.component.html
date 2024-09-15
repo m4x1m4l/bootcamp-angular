@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Add Skill</h1>
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+    <div class="">
+      <label for="name">Skillname</label>
+      <input type="text" id="name" name="name" [(ngModel)]="formData.name" class="form-control" minlength="1" required>
+    </div>
+    <button mat-button type="submit" [disabled]="myForm.invalid" >Add Skill</button>
+    <button mat-button routerLink="/skill">Zurück</button>
+  </form>
+
+</div>

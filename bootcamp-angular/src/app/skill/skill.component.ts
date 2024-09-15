@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {Skill} from "../shared/skill";
-import {SkillDataServiceService} from "../shared/skill-data-service.service";
+import {SkillDataService} from "../shared/skill-data.service";
 
 @Component({
   selector: 'app-skill',
@@ -11,7 +11,7 @@ export class SkillComponent {
   displayedColumns: string[] = ['index', 'id', 'modify', 'name'];
   dataSource: Skill[] = [];
 
-  constructor(private skillDataService: SkillDataServiceService) {
+  constructor(private skillDataService: SkillDataService) {
     skillDataService.getAll().subscribe(data => {
       this.dataSource = data;
     })

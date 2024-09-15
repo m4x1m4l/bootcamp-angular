@@ -11,13 +11,16 @@ import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http"
 import {MatTableModule} from "@angular/material/table";
+import { SkillEditComponent } from './skill-edit/skill-edit.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
     AppComponent,
     EmployeeComponent,
     SkillComponent,
-    TeamComponent
+    TeamComponent,
+    SkillEditComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,9 @@ import {MatTableModule} from "@angular/material/table";
     MatToolbarModule,
     MatButtonModule,
     HttpClientModule,
-    MatTableModule
+    MatTableModule,
+    FormsModule,
+    FormsModule
   ],
   providers: [
   ],

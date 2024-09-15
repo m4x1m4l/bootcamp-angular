@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import {EmployeeComponent} from "./employee/employee.component";
 import {TeamComponent} from "./team/team.component";
 import {SkillComponent} from "./skill/skill.component";
+import {SkillEditComponent} from "./skill-edit/skill-edit.component";
 
 const routes: Routes = [
   {
@@ -14,6 +15,9 @@ const routes: Routes = [
   {
     path: 'skill', component: SkillComponent
   },
+  {
+    path: 'add-skill', component: SkillEditComponent
+  }
 
 ];
 
