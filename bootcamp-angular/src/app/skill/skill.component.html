@@ -1,1 +1,28 @@
-<p>skill works!</p>
+<button mat-button>Add Fähigkeit</button>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef> Index </th>
+    <td mat-cell *matCellDef="let element; let i = index"> {{ i +1 }} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef> ID </th>
+    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="modify">
+    <th mat-header-cell *matHeaderCellDef> Modifizieren </th>
+    <td mat-cell *matCellDef="let element">
+      <button mat-button>delete</button>
+      <button mat-button>edit</button>
+    </td>
+  </ng-container>
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
