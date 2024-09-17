@@ -16,7 +16,10 @@ const routes: Routes = [
     path: 'skill', component: SkillComponent
   },
   {
-    path: 'add-skill', component: SkillEditComponent
+    path: 'skill/new', component: SkillEditComponent
+  },
+  {
+    path: 'skill/:id/edit', component: SkillEditComponent
   }
 
 ];

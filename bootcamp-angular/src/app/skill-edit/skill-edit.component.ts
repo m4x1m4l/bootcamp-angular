@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import {SkillDataService} from "../shared/skill-data.service";
 import {Skill} from "../shared/skill";
-import {Router} from "@angular/router";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Component({
   selector: 'app-skill-edit',
@@ -13,8 +13,29 @@ export class SkillEditComponent {
   formData = {
     name: ''
   }
-  constructor(private skillDataService: SkillDataService, private router: Router) {
+  editMode = false;
+  id: number = 0;
+  constructor(private skillDataService: SkillDataService, private router: Router, private route: ActivatedRoute) {
 
+  }
+
+  ngOnInit(): void{
+    this.route.params.subscribe(
+      (params) => {
+        this.id = +params['id']
+        this.editMode = !!this.id;
+
+        if(this.editMode){
+          this.initForm(this.id);
+        }
+      }
+    )
+  }
+
+  private initForm(id: number){
+    this.skillDataService.getSkill(id).subscribe(
+      skill => this.formData.name = skill.name
+    )
   }
 
   onSubmit() {
@@ -24,5 +45,9 @@ export class SkillEditComponent {
     ).subscribe();
 
     this.router.navigateByUrl("/skill");
+  }
+
+  addOrUpdate(){
+    return this.editMode ? this.skillDataService.updateSkill(this.id, {name: this.formData.name }) : this.skillDataService.addSkill({name: this.formData.name})
   }
 }

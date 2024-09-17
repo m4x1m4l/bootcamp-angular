@@ -1,7 +1,10 @@
-import { Component, inject} from '@angular/core';
+import {Component, Inject, inject} from '@angular/core';
 import {
+  MAT_DIALOG_DATA,
   MatDialogRef,
 } from "@angular/material/dialog";
+import {DeleteDialogData} from "../delete-dialog-data";
+
 
 @Component({
   selector: 'app-delete-dialog',
@@ -9,13 +12,17 @@ import {
   styleUrls: ['./delete-dialog.component.scss'],
 })
 export class DeleteDialogComponent {
-  readonly dialogRef = inject(MatDialogRef<DeleteDialogComponent>);
+  toDelete: string = '';
+  constructor(public dialogRef: MatDialogRef<DeleteDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DeleteDialogData) {
+    this.toDelete = data.toDelete;
+  }
 
-  onNoClick(): void {
+
+  onCancelClick(): void {
     this.dialogRef.close(false);  // Schließt den Dialog und gibt "false" zurück
   }
 
-  onOkClick(): void {
+  onDeleteClick(): void {
     this.dialogRef.close(true);   // Schließt den Dialog und gibt "true" zurück
   }
 }

@@ -50,4 +50,17 @@ export class SkillDataService {
       catchError(this.handleError)
     );
   }
+
+  getSkill(id: number): Observable<Skill> {
+    return this.http.get<Skill>(`${this.apiUrl}/skills/${id}`).pipe(
+      catchError(this.handleError)
+    )
+  }
+
+  updateSkill(id: number, skill: Skill) {
+    return this.http.put(`${this.apiUrl}/skills/${id}`, skill).pipe(
+      tap(() => this.getAll().subscribe()),
+      catchError(this.handleError)
+    );
+  }
 }

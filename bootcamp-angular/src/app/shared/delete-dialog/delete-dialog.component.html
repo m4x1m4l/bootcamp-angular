@@ -1,8 +1,8 @@
-<h2 mat-dialog-title>Delete file</h2>
+<h2 mat-dialog-title>Delete Item {{ toDelete }} </h2>
 <mat-dialog-content>
-  Would you like to delete ?
+  Would you like to delete {{ toDelete }}?
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button mat-dialog-close (click)="onNoClick()">No</button>
-  <button mat-button mat-dialog-close cdkFocusInitial (click)="onOkClick()">Ok</button>
+  <button mat-button mat-dialog-close color="primary"  (click)="onCancelClick()">Cancel</button>
+  <button mat-button mat-dialog-close  color="warn"cdkFocusInitial (click)="onDeleteClick()">Delete</button>
 </mat-dialog-actions>
