@@ -3,7 +3,7 @@ import {Skill} from "../shared/skill";
 import {SkillDataService} from "../shared/skill-data.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteDialogComponent} from "../shared/delete-dialog/delete-dialog.component";
-import {map, Observable, of} from "rxjs";
+import {catchError, map, Observable, of, tap} from "rxjs";
 import {Router} from "@angular/router";
 
 @Component({
@@ -22,7 +22,12 @@ export class SkillComponent {
   }
 
   ngOnInit(): void{
-    this.dataSource = this.skillDataService.skillList$;
+    this.dataSource = this.skillDataService.skillList$.pipe(
+      catchError(error => {
+        console.error('Fehler beim Laden der Daten', error);
+        return of([]); // Im Fehlerfall wird eine leere Liste zurückgegeben
+      })
+    );
   }
 
   openDeleteDialog(toDelete: string) {
@@ -39,7 +44,13 @@ export class SkillComponent {
   deleteElement(id: number) {
      const dialogRef = this.openDeleteDialog(`ID: ${id}`);
      dialogRef.afterClosed().subscribe(result => {
-       if(result) this.skillDataService.deleteSkill(id).subscribe();
+       if(result) this.skillDataService.deleteSkill(id).pipe(
+         tap(() => console.log(`Skill mit ID ${id} gelöscht`)),
+         catchError(error => {
+           console.error(`Fehler beim Löschen des Skills mit ID ${id}`, error);
+           return of(null); // Fehlerfall abfangen und nichts tun
+         })
+       ).subscribe();
      })
 
   }

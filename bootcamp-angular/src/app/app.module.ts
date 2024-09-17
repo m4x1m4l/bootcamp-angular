@@ -16,6 +16,7 @@ import {FormsModule} from "@angular/forms";
 import { DeleteDialogComponent } from './shared/delete-dialog/delete-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
+import {MatButtonToggleModule} from "@angular/material/button-toggle";
 
 @NgModule({
   declarations: [
@@ -26,19 +27,20 @@ import {MatInputModule} from "@angular/material/input";
     SkillEditComponent,
     DeleteDialogComponent
   ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        BrowserAnimationsModule,
-        MatToolbarModule,
-        MatButtonModule,
-        HttpClientModule,
-        MatTableModule,
-        FormsModule,
-        FormsModule,
-        MatDialogModule,
-        MatInputModule
-    ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    BrowserAnimationsModule,
+    MatToolbarModule,
+    MatButtonModule,
+    HttpClientModule,
+    MatTableModule,
+    FormsModule,
+    FormsModule,
+    MatDialogModule,
+    MatInputModule,
+    MatButtonToggleModule
+  ],
   providers: [
   ],
   bootstrap: [AppComponent]
