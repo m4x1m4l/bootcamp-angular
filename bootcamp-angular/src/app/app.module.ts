@@ -13,6 +13,8 @@ import {HttpClientModule} from "@angular/common/http"
 import {MatTableModule} from "@angular/material/table";
 import { SkillEditComponent } from './skill-edit/skill-edit.component';
 import {FormsModule} from "@angular/forms";
+import { DeleteDialogComponent } from './shared/delete-dialog/delete-dialog.component';
+import {MatDialogModule} from "@angular/material/dialog";
 
 @NgModule({
   declarations: [
@@ -20,7 +22,8 @@ import {FormsModule} from "@angular/forms";
     EmployeeComponent,
     SkillComponent,
     TeamComponent,
-    SkillEditComponent
+    SkillEditComponent,
+    DeleteDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +34,8 @@ import {FormsModule} from "@angular/forms";
     HttpClientModule,
     MatTableModule,
     FormsModule,
-    FormsModule
+    FormsModule,
+    MatDialogModule
   ],
   providers: [
   ],

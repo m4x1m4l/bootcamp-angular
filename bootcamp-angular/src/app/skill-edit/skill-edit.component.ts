@@ -18,7 +18,6 @@ export class SkillEditComponent {
   }
 
   onSubmit() {
-    console.log(this.formData)
     this.skillDataService.addSkill({
       "name": this.formData.name
     }
