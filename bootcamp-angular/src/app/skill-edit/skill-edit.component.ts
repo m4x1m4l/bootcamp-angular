@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {SkillDataService} from "../shared/skill-data.service";
 import {Skill} from "../shared/skill";
 import {ActivatedRoute, Router} from "@angular/router";
+import {catchError, of} from "rxjs";
 
 @Component({
   selector: 'app-skill-edit',
@@ -39,15 +40,26 @@ export class SkillEditComponent {
   }
 
   onSubmit() {
-    this.skillDataService.addSkill({
-      "name": this.formData.name
-    }
-    ).subscribe();
-
-    this.router.navigateByUrl("/skill");
+    // Führe entweder ein Update oder ein Hinzufügen durch
+    this.addOrUpdate()
+      .pipe(
+        catchError(error => {
+          console.error('Fehler beim Speichern', error);
+          return of(null); // Fehlerbehandlung
+        })
+      )
+      .subscribe(success => {
+        if (success) {
+          this.router.navigateByUrl('/skill'); // Nur nach Erfolg navigieren
+        } else {
+          alert('Es gab ein Problem beim Speichern des Skills.'); // Benutzer informieren
+        }
+      });
   }
 
   addOrUpdate(){
-    return this.editMode ? this.skillDataService.updateSkill(this.id, {name: this.formData.name }) : this.skillDataService.addSkill({name: this.formData.name})
+    return this.editMode
+      ? this.skillDataService.updateSkill(this.id, {name: this.formData.name })
+      : this.skillDataService.addSkill({name: this.formData.name})
   }
 }

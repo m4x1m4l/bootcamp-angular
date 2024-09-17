@@ -1,9 +1,10 @@
 <div class="container m-2">
   <h1>Add Skill</h1>
   <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+
     <div class="m-2">
       <mat-label for="name">Skillname</mat-label>
-      <input type="text" id="name" name="name" [(ngModel)]="formData.name" class="form-control w-25" maxlength="50" #name="ngModel" required>
+      <input matInput type="text" id="name" name="name" [(ngModel)]="formData.name" class="form-control w-25" maxlength="50" #name="ngModel" required>
       <mat-error *ngIf="name.errors?.['required'] && name.touched">
         Skillname ist erforderlich.
       </mat-error>
