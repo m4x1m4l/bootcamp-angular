@@ -16,7 +16,7 @@ export class SkillDataService {
   }
 
   private handleError(error: HttpErrorResponse){
-    console.log('' + error.message)
+    //from angular docs
     if (error.status === 0) {
       console.error(`An error occurred: ${error.error}`);
       alert('An error occurred:' + error.error);
