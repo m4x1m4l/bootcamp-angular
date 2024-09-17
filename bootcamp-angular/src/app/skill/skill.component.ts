@@ -18,7 +18,7 @@ export class SkillComponent {
   readonly dialog = inject(MatDialog);
 
   constructor(private skillDataService: SkillDataService, private router: Router) {
-
+    this.skillDataService.getAll().subscribe();
   }
 
   ngOnInit(): void{
