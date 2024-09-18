@@ -1,8 +1,8 @@
 <div class="container">
-  <div class="m-md-2">
+  <div class="mx">
     <button mat-raised-button color="accent" routerLink="/skill/new">Fähigkeit Hinzufügen</button>
   </div>
-  <div class="m-md-2">
+  <div class="my-4">
     <ng-container *ngIf="dataSource | async as data">
       <table mat-table [dataSource]="data" class="mat-elevation-z8">
         <ng-container matColumnDef="index">

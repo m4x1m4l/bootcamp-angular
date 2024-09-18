@@ -2,7 +2,7 @@
   <!--  toolbar-->
   <mat-toolbar color="primary">
     <!--    only visible on xs-->
-    <div class="m-0 d-block d-sm-none">
+    <div class="m-0 d-sm-none">
       <button mat-icon-button class="navbar-toggler" type="button"
               (click)="drawer.toggle()">
         <i class="material-icons">menu</i>
@@ -10,10 +10,10 @@
     </div>
 
     <div class="m-2">
-      <span class="me-2 pointer-cursor" routerLink="">Bootcamp App</span>
+      <span class="me-5 pointer-cursor" routerLink="">Bootcamp App</span>
     </div>
     <!--    not visible on xs-->
-    <div class="d-none d-sm-block d-flex flex-row">
+    <div class="d-none d-sm-block">
       <a mat-button class="m-2" routerLinkActive="active" routerLink="employee">
         <i class="material-icons p-2">badge</i> Mitarbeiter
       </a>
@@ -30,7 +30,6 @@
   <!--  side nav-->
   <mat-drawer-container class="sidenav-container" autosize>
     <mat-drawer #drawer mode="over">
-      <div class="d-flex flex-column">
         <div>
           <a mat-button class="m-2" color="primary" routerLinkActive="active-sidenav" routerLink="employee">
             <i class="material-icons p-2">badge</i>Mitarbeiter
@@ -46,7 +45,6 @@
             <i class="material-icons p-2">group</i>Teams
           </a>
         </div>
-      </div>
     </mat-drawer>
 
     <div class="m-2">
