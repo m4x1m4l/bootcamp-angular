@@ -1,0 +1,59 @@
+<div class="">
+  <!--  toolbar-->
+  <mat-toolbar color="primary">
+    <!--    only visible on xs-->
+    <div class="m-0 d-block d-sm-none">
+      <button mat-icon-button class="navbar-toggler" type="button"
+              (click)="drawer.toggle()">
+        <i class="material-icons">menu</i>
+      </button>
+    </div>
+
+    <div class="m-2">
+      <span class="me-2 pointer-cursor" routerLink="">Bootcamp App</span>
+    </div>
+    <!--    not visible on xs-->
+    <div class="d-none d-sm-block d-flex flex-row">
+      <a mat-button class="m-2" routerLinkActive="active" routerLink="employee">
+        <i class="material-icons p-2">badge</i> Mitarbeiter
+      </a>
+      <a mat-button class="m-2" routerLinkActive="active" routerLink="skill">
+        <i class="material-icons p-2">developer_mode</i> Fähigkeiten
+      </a>
+      <a mat-button class="m-2" routerLinkActive="active" routerLink="team">
+        <i class="material-icons p-2">group</i> Teams
+      </a>
+    </div>
+
+  </mat-toolbar>
+
+  <!--  side nav-->
+  <mat-drawer-container class="sidenav-container" autosize>
+    <mat-drawer #drawer mode="over">
+      <div class="d-flex flex-column">
+        <div>
+          <a mat-button class="m-2" color="primary" routerLinkActive="active-sidenav" routerLink="employee">
+            <i class="material-icons p-2">badge</i>Mitarbeiter
+          </a>
+        </div>
+        <div>
+          <a mat-button class="m-2" color="primary" routerLinkActive="active-sidenav" routerLink="skill">
+            <i class="material-icons p-2">developer_mode</i>Fähigkeiten
+          </a>
+        </div>
+        <div>
+          <a mat-button class="m-2" color="primary" routerLinkActive="active-sidenav" routerLink="team">
+            <i class="material-icons p-2">group</i>Teams
+          </a>
+        </div>
+      </div>
+    </mat-drawer>
+
+    <div class="m-2">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-container>
+
+</div>
+
+
