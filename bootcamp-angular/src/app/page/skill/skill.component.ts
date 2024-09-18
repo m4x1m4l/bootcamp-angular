@@ -1,8 +1,8 @@
 import {Component, inject} from '@angular/core';
-import {Skill} from "../shared/skill";
-import {SkillDataService} from "../shared/skill-data.service";
+import {Skill} from "./model/skill";
+import {SkillDataService} from "./service/skill-data.service";
 import {MatDialog} from "@angular/material/dialog";
-import {DeleteDialogComponent} from "../shared/delete-dialog/delete-dialog.component";
+import {DeleteDialogComponent} from "../../ui/delete-dialog/delete-dialog.component";
 import {catchError, map, Observable, of, tap} from "rxjs";
 import {Router} from "@angular/router";
 

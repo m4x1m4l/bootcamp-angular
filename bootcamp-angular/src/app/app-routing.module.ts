@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {EmployeeComponent} from "./employee/employee.component";
-import {TeamComponent} from "./team/team.component";
-import {SkillComponent} from "./skill/skill.component";
-import {SkillEditComponent} from "./skill-edit/skill-edit.component";
+import {EmployeeComponent} from "./page/employee/employee.component";
+import {TeamComponent} from "./page/team/team.component";
+import {SkillComponent} from "./page/skill/skill.component";
+import {SkillEditComponent} from "./page/skill/skill-edit/skill-edit.component";
 
 const routes: Routes = [
   {

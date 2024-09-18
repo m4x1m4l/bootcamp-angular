@@ -3,7 +3,7 @@ import {
   MAT_DIALOG_DATA,
   MatDialogRef,
 } from "@angular/material/dialog";
-import {DeleteDialogData} from "../delete-dialog-data";
+import {DeleteDialogData} from "../../shared/delete-dialog-data";
 
 
 @Component({
