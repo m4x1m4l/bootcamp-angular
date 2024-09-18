@@ -4,24 +4,15 @@ import {EmployeeComponent} from "./page/employee/employee.component";
 import {TeamComponent} from "./page/team/team.component";
 import {SkillComponent} from "./page/skill/skill.component";
 import {SkillEditComponent} from "./page/skill/skill-edit/skill-edit.component";
+import {HomeComponent} from "./page/home/home.component";
 
 const routes: Routes = [
-  {
-    path: 'employee', component: EmployeeComponent
-  },
-  {
-    path: 'team', component: TeamComponent
-  },
-  {
-    path: 'skill', component: SkillComponent
-  },
-  {
-    path: 'skill/new', component: SkillEditComponent
-  },
-  {
-    path: 'skill/:id/edit', component: SkillEditComponent
-  }
-
+  {path: '', component: HomeComponent, pathMatch: 'full'},
+  {path: 'employee', component: EmployeeComponent},
+  {path: 'team', component: TeamComponent},
+  {path: 'skill', component: SkillComponent},
+  {path: 'skill/new', component: SkillEditComponent},
+  {path: 'skill/:id/edit', component: SkillEditComponent}
 ];
 
 @NgModule({

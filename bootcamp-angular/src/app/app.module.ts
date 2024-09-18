@@ -19,6 +19,7 @@ import {MatInputModule} from "@angular/material/input";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
 import {MatSidenavModule} from "@angular/material/sidenav";
 import { HeaderComponent } from './ui/header/header.component';
+import { HomeComponent } from './page/home/home.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HeaderComponent } from './ui/header/header.component';
     TeamComponent,
     SkillEditComponent,
     DeleteDialogComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
