@@ -17,6 +17,8 @@ import { DeleteDialogComponent } from './shared/delete-dialog/delete-dialog.comp
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonToggleModule} from "@angular/material/button-toggle";
+import {MatSidenavModule} from "@angular/material/sidenav";
+import { HeaderComponent } from './shared/header/header.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     SkillComponent,
     TeamComponent,
     SkillEditComponent,
-    DeleteDialogComponent
+    DeleteDialogComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
@@ -39,7 +42,8 @@ import {MatButtonToggleModule} from "@angular/material/button-toggle";
     FormsModule,
     MatDialogModule,
     MatInputModule,
-    MatButtonToggleModule
+    MatButtonToggleModule,
+    MatSidenavModule
   ],
   providers: [
   ],
