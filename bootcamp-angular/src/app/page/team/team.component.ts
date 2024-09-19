@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {catchError, Observable, of, tap} from "rxjs";
+import {catchError, map, Observable, of, tap} from "rxjs";
 import {Team} from "./model/team";
 import {MatDialog} from "@angular/material/dialog";
 import {TeamService} from "./service/team.service";
@@ -14,14 +14,16 @@ import {DeleteDialogComponent} from "../../ui/delete-dialog/delete-dialog.compon
 export class TeamComponent {
 
   displayedColumns: string[] = ['index', 'id', 'name', 'teamLeadId', 'modify'];
-  dataSource: Team[] = [];
+  //dataSource: Team[] = [];
+  dataSource: Observable<Team[]> = of([])
 
   readonly dialog = inject(MatDialog);
 
   constructor(private route: ActivatedRoute, private teamDataService: TeamService, private router: Router){}
   ngOnInit(): void {
     // Zugriff auf die vom Resolver gelieferten Daten
-    this.dataSource = this.route.snapshot.data['teamData']; // 'teamData' ist der Key, der im Routing angegeben wurde
+    //this.dataSource = this.route.snapshot.data['teamData']; // 'teamData' ist der Key, der im Routing angegeben wurde
+    this.dataSource = this.route.data.pipe(map(data => data['teamData']));
   }
 
   openDeleteDialog(toDelete: string) {
@@ -44,7 +46,8 @@ export class TeamComponent {
           console.error(`Fehler beim Löschen des Teams mit ID ${id}`, error);
           return of(null); // Fehlerfall abfangen und nichts tun
         })
-      ).subscribe();
+      ).subscribe(
+      );
     })
   }
 

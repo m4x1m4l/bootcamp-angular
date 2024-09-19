@@ -46,6 +46,7 @@ export class SkillComponent {
      dialogRef.afterClosed().subscribe(result => {
        if(result) this.skillDataService.deleteSkill(id).pipe(
          tap(() => console.log(`Skill mit ID ${id} gelöscht`)),
+         tap(() => this.router.navigateByUrl(this.router.url)),
          catchError(error => {
            console.error(`Fehler beim Löschen des Skills mit ID ${id}`, error);
            return of(null); // Fehlerfall abfangen und nichts tun

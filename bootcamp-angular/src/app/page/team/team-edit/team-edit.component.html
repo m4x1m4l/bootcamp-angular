@@ -1,1 +1,35 @@
-<p>team-edit works!</p>
+<div class="container m-2">
+  <h2>Team hinzufügen</h2>
+  <form (ngSubmit)="onSubmit()" #myForm="ngForm">
+
+    <mat-form-field class="m-2" >
+      <mat-label for="name">Teamname</mat-label>
+      <input matInput type="text" id="name" name="name" [(ngModel)]="formData.name" class="form-control w-auto" maxlength="50" #name="ngModel" required>
+      <mat-error *ngIf="name.errors?.['required'] && name.touched">
+        Skillname ist erforderlich.
+      </mat-error>
+      <mat-error *ngIf="name.errors?.['maxlength']">
+        Skillname darf maximal 50 Zeichen lang sein.
+      </mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="m-2" >
+      <mat-label for="name">Teamleiter ID</mat-label>
+      <input matInput type="text" id="teamLeadId" name="teamLeadId" [(ngModel)]="formData.teamLeadId" class="form-control w-auto" maxlength="50" #name="ngModel" required>
+      <mat-error *ngIf="name.errors?.['required'] && name.touched">
+        Teamleiter ID ist erforderlich.
+      </mat-error>
+      <mat-error *ngIf="name.errors?.['maxlength']">
+        Teamleiter ID darf maximal 50 Zeichen lang sein.
+      </mat-error>
+    </mat-form-field>
+
+    <div class="m-2">
+      <button mat-raised-button type="submit" [disabled]="myForm.invalid"
+              class="my-2 me-2" color="primary">{{ editMode ? 'Anpassen' : 'Hinzufügen' }}</button>
+      <button mat-raised-button routerLink="/team" class="my-2 ms-2" color="warn">Zurück</button>
+    </div>
+
+  </form>
+
+</div>

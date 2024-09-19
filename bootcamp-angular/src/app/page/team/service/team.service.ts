@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 import {Team} from "../model/team";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
+import {ActivatedRoute, Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +14,7 @@ export class TeamService {
   private _teamList$ = new BehaviorSubject<Team[]>([]);
   readonly teamList$ = this._teamList$.asObservable();
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
   private handleError(error: HttpErrorResponse){
     //from angular docs
@@ -50,7 +51,7 @@ export class TeamService {
     return this.http.delete<void>(`${this.apiUrl}/teams/${id}`).pipe(
       tap(() => {
         const updatedTeams = this._teamList$.getValue().filter(team => team.id !== id);
-        this._teamList$.next(updatedTeams)
+        this._teamList$.next(updatedTeams);
       }),
       catchError(this.handleError)
     )
