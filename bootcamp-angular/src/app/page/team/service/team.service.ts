@@ -1,8 +1,7 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, catchError, Observable, of, tap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
 import {Team} from "../model/team";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Skill} from "../../skill/model/skill";
 
 @Injectable({
   providedIn: 'root'
