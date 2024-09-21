@@ -4,7 +4,7 @@
 
     <mat-form-field class="m-2" >
       <mat-label for="name">Skillname</mat-label>
-      <input matInput type="text" id="name" name="name" [(ngModel)]="formData.name" class="form-control w-auto" maxlength="50" #name="ngModel" required>
+      <input matInput type="text" id="name" name="name" [(ngModel)]="formData.name" class="w-auto" maxlength="50" #name="ngModel" required>
       <mat-error *ngIf="name.errors?.['required'] && name.touched">
         Skillname ist erforderlich.
       </mat-error>
