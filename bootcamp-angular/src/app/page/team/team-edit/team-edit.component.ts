@@ -9,9 +9,9 @@ import {catchError, of} from "rxjs";
   styleUrls: ['./team-edit.component.scss']
 })
 export class TeamEditComponent {
-  formData = {
+  formData: {name: string, teamLeadId: null | number }= {
     name: '',
-    teamLeadId: 3,
+    teamLeadId: null,
   }
 
   editMode = false;

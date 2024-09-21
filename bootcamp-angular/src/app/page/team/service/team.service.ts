@@ -58,7 +58,7 @@ export class TeamService {
     return this._teamList$.asObservable();
   }
 
-  addTeam(team: Team): Observable<Team> {
+  addTeam(team: { name: string, teamLeadId: number | null }): Observable<Team> {
     return this.http.post<Team>(`${this.apiUrl}/teams`, team).pipe(
       tap(newTeam => {
         const updatedSkills = [...this._teamList$.getValue(), newTeam]
@@ -83,7 +83,7 @@ export class TeamService {
     )
   }
 
-  updateTeam(id: number, team: Team): Observable<Team> {
+  updateTeam(id: number, team: { name: string, teamLeadId: number | null }): Observable<Team> {
     return this.http.put<Team>(`${this.apiUrl}/teams/${id}`, team).pipe(
       tap((updatedTeam: Team) => {
         // Lokale Liste aktualisieren: Finde das Team-Objekt mit derselben ID und ersetze es
