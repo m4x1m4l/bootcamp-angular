@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
+import {BehaviorSubject, catchError, Observable, of, tap, throwError} from "rxjs";
 import {Team} from "../model/team";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
 import {ActivatedRoute, Router} from "@angular/router";
@@ -13,6 +13,8 @@ export class TeamService {
 
   private _teamList$ = new BehaviorSubject<Team[]>([]);
   readonly teamList$ = this._teamList$.asObservable();
+  private isFetching = false;  // Status-Flag, um den laufenden HTTP-Call zu überwachen
+
 
   constructor(private http: HttpClient, private router: Router) { }
 
@@ -31,12 +33,31 @@ export class TeamService {
     return throwError(() => new Error('Something bad happened; please try again later.'));
   }
 
-  getAll(): Observable<Team[]>{
-    return this.http.get<Team[]>(`${this.apiUrl}/teams`).pipe(
-      tap(teamList => this._teamList$.next(teamList)),
-      catchError(this.handleError)
-    );
+
+
+  getAll(): Observable<Team[]> {
+    console.log('getAll called')
+    // Wenn bereits Daten da sind, oder gerade ein HTTP-Call läuft, gib nur das Observable zurück
+    if (this._teamList$.getValue().length === 0 && !this.isFetching) {
+      this.isFetching = true;  // Setze das Flag, um weitere HTTP-Calls zu verhindern
+      this.http.get<Team[]>(`${this.apiUrl}/teams`).pipe(
+        tap(teams => {
+          this._teamList$.next(teams);
+          this.isFetching = false;  // API-Call ist abgeschlossen, Flag zurücksetzen
+        }),
+        catchError(() => {
+          this.isFetching = false;  // Auch bei Fehlern das Flag zurücksetzen
+          return of([]);  // Optional: Gib ein leeres Array zurück bei Fehler
+        })
+      ).subscribe(() => console.log('Fetch done'));
+      console.log('getAll mit Fetch')
+
+    }
+
+    // Gib immer das Observable vom BehaviorSubject zurück
+    return this._teamList$.asObservable();
   }
+
   addTeam(team: Team): Observable<Team> {
     return this.http.post<Team>(`${this.apiUrl}/teams`, team).pipe(
       tap(newTeam => {

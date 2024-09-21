@@ -14,16 +14,15 @@ import {DeleteDialogComponent} from "../../ui/delete-dialog/delete-dialog.compon
 export class TeamComponent {
 
   displayedColumns: string[] = ['index', 'id', 'name', 'teamLeadId', 'modify'];
-  //dataSource: Team[] = [];
   dataSource: Observable<Team[]> = of([])
+
 
   readonly dialog = inject(MatDialog);
 
   constructor(private route: ActivatedRoute, private teamDataService: TeamService, private router: Router){}
   ngOnInit(): void {
-    // Zugriff auf die vom Resolver gelieferten Daten
-    //this.dataSource = this.route.snapshot.data['teamData']; // 'teamData' ist der Key, der im Routing angegeben wurde
-    this.dataSource = this.route.data.pipe(map(data => data['teamData']));
+    console.log('ngOnInit team component')
+    this.dataSource = this.teamDataService.getAll();
   }
 
   openDeleteDialog(toDelete: string) {
