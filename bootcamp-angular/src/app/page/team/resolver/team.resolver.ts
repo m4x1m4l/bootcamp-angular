@@ -1,4 +1,4 @@
-import { ResolveFn } from '@angular/router';
+import {ResolveFn} from '@angular/router';
 import {TeamService} from "../service/team.service";
 import {inject} from "@angular/core";
 import {Observable} from "rxjs";

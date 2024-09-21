@@ -3,7 +3,7 @@ import {Skill} from "./model/skill";
 import {SkillDataService} from "./service/skill-data.service";
 import {MatDialog} from "@angular/material/dialog";
 import {DeleteDialogComponent} from "../../ui/delete-dialog/delete-dialog.component";
-import {catchError, map, Observable, of, tap} from "rxjs";
+import {catchError, Observable, of, tap} from "rxjs";
 import {Router} from "@angular/router";
 
 @Component({

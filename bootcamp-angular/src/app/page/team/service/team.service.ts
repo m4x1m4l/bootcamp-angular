@@ -1,8 +1,8 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, catchError, Observable, of, tap, throwError} from "rxjs";
 import {Team} from "../model/team";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {ActivatedRoute, Router} from "@angular/router";
+import {Router} from "@angular/router";
 
 @Injectable({
   providedIn: 'root'

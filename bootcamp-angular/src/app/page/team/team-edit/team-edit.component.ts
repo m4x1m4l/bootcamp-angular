@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-import {SkillDataService} from "../../skill/service/skill-data.service";
+import {Component} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
 import {TeamService} from "../service/team.service";
 import {catchError, of} from "rxjs";

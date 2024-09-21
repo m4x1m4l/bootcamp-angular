@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {Skill} from "../model/skill";
 import {HttpClient, HttpErrorResponse} from '@angular/common/http';
 import {BehaviorSubject, catchError, Observable, tap, throwError} from 'rxjs';

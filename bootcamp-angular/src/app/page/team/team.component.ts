@@ -1,6 +1,6 @@
 import {Component, inject} from '@angular/core';
 import {ActivatedRoute, Router} from "@angular/router";
-import {catchError, map, Observable, of, tap} from "rxjs";
+import {catchError, Observable, of, tap} from "rxjs";
 import {Team} from "./model/team";
 import {MatDialog} from "@angular/material/dialog";
 import {TeamService} from "./service/team.service";
