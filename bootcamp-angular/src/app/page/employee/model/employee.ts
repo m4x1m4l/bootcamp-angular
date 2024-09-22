@@ -1,7 +1,7 @@
 export interface Employee {
   id?: number,
   teamId: number,
-  teamName: string,
+  teamName?: string,
   firstname: string,
   lastname: string,
   birthdate: Date,

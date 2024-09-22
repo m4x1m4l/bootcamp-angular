@@ -7,7 +7,7 @@ import {BehaviorSubject, catchError, Observable, tap, throwError} from 'rxjs';
   providedIn: 'root'
 })
 export class SkillDataService {
-  private apiUrl = 'http://localhost:8080'
+  private apiUrl = 'http://localhost:8080';
   private _skillList$ = new BehaviorSubject<Skill[]>([]);
   readonly skillList$ = this._skillList$.asObservable();
   constructor(private http: HttpClient) {
