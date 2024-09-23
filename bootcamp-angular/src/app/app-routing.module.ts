@@ -7,10 +7,13 @@ import {SkillEditComponent} from "./page/skill/skill-edit/skill-edit.component";
 import {HomeComponent} from "./page/home/home.component";
 import {teamResolver} from "./page/team/resolver/team.resolver";
 import {TeamEditComponent} from "./page/team/team-edit/team-edit.component";
+import {EmployeeEditComponent} from "./page/employee/employee-edit/employee-edit.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent, pathMatch: 'full'},
   {path: 'employee', component: EmployeeComponent},
+  {path: 'employee/new', component: EmployeeEditComponent},
+  {path: 'employee/:id/edit', component: EmployeeEditComponent},
   {path: 'team', component: TeamComponent, resolve: {
     teamData: teamResolver
     }},

@@ -1,10 +1,10 @@
 export interface Employee {
-  id?: number,
+  id?: number
   teamId: number,
   teamName?: string,
   firstname: string,
   lastname: string,
   birthdate: Date,
-  salutation: string
+  salutation: string,
   trumpQuote?: string
 }

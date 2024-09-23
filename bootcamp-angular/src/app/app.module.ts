@@ -12,7 +12,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {HttpClientModule} from "@angular/common/http"
 import {MatTableModule} from "@angular/material/table";
 import {SkillEditComponent} from './page/skill/skill-edit/skill-edit.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {DeleteDialogComponent} from './ui/delete-dialog/delete-dialog.component';
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatInputModule} from "@angular/material/input";
@@ -21,6 +21,10 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {HeaderComponent} from './ui/header/header.component';
 import {HomeComponent} from './page/home/home.component';
 import {TeamEditComponent} from './page/team/team-edit/team-edit.component';
+import {EmployeeEditComponent} from './page/employee/employee-edit/employee-edit.component';
+import {MatSelectModule} from "@angular/material/select";
+import {MatDatepickerModule} from "@angular/material/datepicker";
+import {MatNativeDateModule} from "@angular/material/core";
 
 @NgModule({
   declarations: [
@@ -32,7 +36,8 @@ import {TeamEditComponent} from './page/team/team-edit/team-edit.component';
     DeleteDialogComponent,
     HeaderComponent,
     HomeComponent,
-    TeamEditComponent
+    TeamEditComponent,
+    EmployeeEditComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +52,11 @@ import {TeamEditComponent} from './page/team/team-edit/team-edit.component';
     MatDialogModule,
     MatInputModule,
     MatButtonToggleModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [
   ],

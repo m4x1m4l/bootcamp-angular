@@ -4,7 +4,7 @@
     <inspection_tool class="HtmlUnknownAttribute" enabled="true" level="WARNING" enabled_by_default="true">
       <option name="myValues">
         <value>
-          <list size="9">
+          <list size="10">
             <item index="0" class="java.lang.String" itemvalue="fxflexfill" />
             <item index="1" class="java.lang.String" itemvalue="d-lg-flex" />
             <item index="2" class="java.lang.String" itemvalue="d-none" />
@@ -14,6 +14,7 @@
             <item index="6" class="java.lang.String" itemvalue="fxhide.lt-md" />
             <item index="7" class="java.lang.String" itemvalue="mode" />
             <item index="8" class="java.lang.String" itemvalue="autosize" />
+            <item index="9" class="java.lang.String" itemvalue="startview" />
           </list>
         </value>
       </option>
