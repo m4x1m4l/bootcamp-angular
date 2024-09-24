@@ -25,6 +25,11 @@ import {EmployeeEditComponent} from './page/employee/employee-edit/employee-edit
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
+import {
+  EmployeeKnowledgeComponent
+} from './page/employee/employee-edit/employee-knowledge/employee-knowledge.component';
+import {MatSliderModule} from "@angular/material/slider";
+import {MatIconModule} from "@angular/material/icon";
 
 @NgModule({
   declarations: [
@@ -37,7 +42,8 @@ import {MatNativeDateModule} from "@angular/material/core";
     HeaderComponent,
     HomeComponent,
     TeamEditComponent,
-    EmployeeEditComponent
+    EmployeeEditComponent,
+    EmployeeKnowledgeComponent
   ],
   imports: [
     BrowserModule,
@@ -56,7 +62,9 @@ import {MatNativeDateModule} from "@angular/material/core";
     MatSelectModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSliderModule,
+    MatIconModule
   ],
   providers: [
   ],

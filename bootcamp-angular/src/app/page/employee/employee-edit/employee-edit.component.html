@@ -63,9 +63,17 @@
     <div class="m-2">
       <button mat-raised-button type="submit" [disabled]="employeeForm.invalid"
               class="my-2 me-2" color="primary">{{ editMode ? 'Anpassen' : 'Hinzufügen' }}</button>
+
       <button mat-raised-button routerLink="/employee" class="my-2 ms-2" color="warn">Zurück</button>
     </div>
 
   </form>
+  <ng-container *ngFor="let knowledge of knowledgesOfEmployee$ | async">
+    <app-employee-knowledge [currentKnowledge]="knowledge"></app-employee-knowledge>
+  </ng-container>
 
+  <button mat-fab extended [hidden]="false">
+    <mat-icon>add</mat-icon>
+    Fähigkeit
+  </button>
 </div>

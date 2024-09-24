@@ -1,11 +1,14 @@
 import {Component} from '@angular/core';
 import {EmployeeDataService} from "../service/employee-data.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {catchError, of} from "rxjs";
+import {catchError, Observable, of} from "rxjs";
 import {SalutationDropDown} from "../model/salutation-drop-down";
 import {TeamDropDown} from "../model/team-drop-down";
 import {TeamService} from "../../team/service/team.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {KnowledgeDataService} from "../service/knowledge-data.service";
+import {SkillDataService} from "../../skill/service/skill-data.service";
+import {Knowledge} from "../model/knowledge";
 
 @Component({
   selector: 'app-employee-edit',
@@ -33,9 +36,11 @@ export class EmployeeEditComponent {
 
   dropDownTeams: TeamDropDown[] = [];
 
+  knowledgesOfEmployee$: Observable<Knowledge[]> = of([])
 
 
-  constructor(private employeeDataService: EmployeeDataService, private teamDataService: TeamService, private router: Router, private route: ActivatedRoute) {
+
+  constructor(private employeeDataService: EmployeeDataService, private teamDataService: TeamService, private knowledgeDataService: KnowledgeDataService, private skillDataService: SkillDataService, private router: Router, private route: ActivatedRoute) {
   }
 
   ngOnInit(): void{
@@ -54,6 +59,11 @@ export class EmployeeEditComponent {
     {
       teams.map(team => this.dropDownTeams.push({value: team.id, viewValue: team.name}))
     });
+
+    this.knowledgesOfEmployee$ = this.knowledgeDataService.getAllFromEmployee(this.id);
+    console.log(this.id)
+    //console.log(this.knowledgesOfEmployee$.subscribe(k => console.log(k)))
+
   }
   private initForm(id: number){
     this.employeeDataService.getEmployee(id).subscribe(
