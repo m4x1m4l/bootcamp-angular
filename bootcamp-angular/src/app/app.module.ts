@@ -25,9 +25,6 @@ import {EmployeeEditComponent} from './page/employee/employee-edit/employee-edit
 import {MatSelectModule} from "@angular/material/select";
 import {MatDatepickerModule} from "@angular/material/datepicker";
 import {MatNativeDateModule} from "@angular/material/core";
-import {
-  EmployeeKnowledgeComponent
-} from './page/employee/employee-edit/employee-knowledge/employee-knowledge.component';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatIconModule} from "@angular/material/icon";
 import {MatListModule} from "@angular/material/list";
@@ -44,7 +41,6 @@ import {MatListModule} from "@angular/material/list";
     HomeComponent,
     TeamEditComponent,
     EmployeeEditComponent,
-    EmployeeKnowledgeComponent
   ],
     imports: [
         BrowserModule,

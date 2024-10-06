@@ -74,21 +74,7 @@
 
   <mat-divider></mat-divider>
 
-  <div class="my-5">
-    <h2>Neue Fähigkeit hinzufügen</h2>
-    <app-employee-knowledge [currentKnowledge]="emptyKnowledge" [filteredSkillsList$]="skillsWithHidden$"
-                            [isAddNewComponent]="true" (knowledgeSaved)="receiveAddKnowledge($event)"></app-employee-knowledge>
-  </div>
 
-  <mat-divider></mat-divider>
-
-  <div class="my-5">
-    <h2>Fähigkeiten des Mitarbeiters</h2>
-    <ng-container *ngFor="let knowledge of knowledgesOfEmployee$ | async">
-      <app-employee-knowledge [currentKnowledge]="knowledge" [filteredSkillsList$]="skillsWithHidden$"
-                              (knowledgeDeleted)="receiveDeleteKnowledge($event)" (knowledgeSaved)="receiveUpdateKnowledge($event)"></app-employee-knowledge>
-    </ng-container>
-  </div>
 
 
 
