@@ -1,79 +1,95 @@
 <div class="container m-2">
-  <h2>Employee hinzufügen</h2>
-  <form [formGroup]=employeeForm (ngSubmit)="onSubmit()">
+  <div class="my-5">
 
-    <mat-form-field>
-      <mat-label>Anrede</mat-label>
-      <mat-select formControlName="salutation">
-        <ng-container *ngFor="let salutation of salutations">
-          <mat-option [value]="salutation.value" >{{salutation.viewValue}}</mat-option>
-        </ng-container>
-      </mat-select>
-      <mat-error *ngIf="employeeForm.get('salutation')?.invalid && employeeForm.get('salutation')?.touched">
-        Anrede ist erforderlich.
-      </mat-error>
-    </mat-form-field>
+    <h2>Employee bearbeiten</h2>
+    <form [formGroup]=employeeForm (ngSubmit)="onSubmit()">
 
-    <mat-form-field class="m-2" >
-      <mat-label for="salutation">Vorname</mat-label>
-      <input matInput type="text" id="firstname" class="w-auto" formControlName="firstname">
-      <mat-error *ngIf="employeeForm.get('firstname')?.invalid && employeeForm.get('firstname')?.touched">
-        Vorname ist erforderlich.
-      </mat-error>
-      <mat-error *ngIf="employeeForm.get('firstname')?.errors?.['maxlength']">
-        Vorname darf maximal 50 Zeichen lang sein.
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Anrede</mat-label>
+        <mat-select formControlName="salutation">
+          <ng-container *ngFor="let salutation of salutations">
+            <mat-option [value]="salutation.value" >{{salutation.viewValue}}</mat-option>
+          </ng-container>
+        </mat-select>
+        <mat-error *ngIf="employeeForm.get('salutation')?.invalid && employeeForm.get('salutation')?.touched">
+          Anrede ist erforderlich.
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field class="m-2" >
-      <mat-label for="salutation">Nachname</mat-label>
-      <input matInput formControlName="lastname" type="text" id="lastname" class="w-auto">
-      <mat-error *ngIf="employeeForm.get('lastname')?.invalid && employeeForm.get('lastname')?.touched">
-        Nachname ist erforderlich.
-      </mat-error>
-      <mat-error *ngIf="employeeForm.get('lastname')?.errors?.['maxlength']">
-        Nachname darf maximal 50 Zeichen lang sein.
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field class="m-2" >
+        <mat-label for="salutation">Vorname</mat-label>
+        <input matInput type="text" id="firstname" class="w-auto" formControlName="firstname">
+        <mat-error *ngIf="employeeForm.get('firstname')?.invalid && employeeForm.get('firstname')?.touched">
+          Vorname ist erforderlich.
+        </mat-error>
+        <mat-error *ngIf="employeeForm.get('firstname')?.errors?.['maxlength']">
+          Vorname darf maximal 50 Zeichen lang sein.
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Team</mat-label>
-      <mat-select formControlName="teamId">
-        <ng-container *ngFor="let team of dropDownTeams">
-          <mat-option [value]="team.value">{{team.viewValue}}</mat-option>
-        </ng-container>
-      </mat-select>
-      <mat-error *ngIf="employeeForm.get('teamId')?.invalid && employeeForm.get('teamId')?.touched">
-        Team ist erforderlich.
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field class="m-2" >
+        <mat-label for="salutation">Nachname</mat-label>
+        <input matInput formControlName="lastname" type="text" id="lastname" class="w-auto">
+        <mat-error *ngIf="employeeForm.get('lastname')?.invalid && employeeForm.get('lastname')?.touched">
+          Nachname ist erforderlich.
+        </mat-error>
+        <mat-error *ngIf="employeeForm.get('lastname')?.errors?.['maxlength']">
+          Nachname darf maximal 50 Zeichen lang sein.
+        </mat-error>
+      </mat-form-field>
 
-    <mat-form-field>
-      <mat-label>Geburtsdatum</mat-label>
-      <input matInput formControlName="birthdate" [matDatepicker]="picker">
-      <mat-hint>MM/DD/YYYY</mat-hint>
-      <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
-      <mat-datepicker #picker startView="year" ></mat-datepicker>
-      <mat-error *ngIf="employeeForm.get('birthdate')?.invalid && employeeForm.get('birthdate')?.touched">
-        Geburtsdatum ist erforderlich.
-      </mat-error>
-    </mat-form-field>
+      <mat-form-field>
+        <mat-label>Team</mat-label>
+        <mat-select formControlName="teamId">
+          <ng-container *ngFor="let team of dropDownTeams">
+            <mat-option [value]="team.value">{{team.viewValue}}</mat-option>
+          </ng-container>
+        </mat-select>
+        <mat-error *ngIf="employeeForm.get('teamId')?.invalid && employeeForm.get('teamId')?.touched">
+          Team ist erforderlich.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Geburtsdatum</mat-label>
+        <input matInput formControlName="birthdate" [matDatepicker]="picker">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker" ></mat-datepicker-toggle>
+        <mat-datepicker #picker startView="year" ></mat-datepicker>
+        <mat-error *ngIf="employeeForm.get('birthdate')?.invalid && employeeForm.get('birthdate')?.touched">
+          Geburtsdatum ist erforderlich.
+        </mat-error>
+      </mat-form-field>
 
 
-    <div class="m-2">
-      <button mat-raised-button type="submit" [disabled]="employeeForm.invalid"
-              class="my-2 me-2" color="primary">{{ editMode ? 'Anpassen' : 'Hinzufügen' }}</button>
+      <div class="m-2">
+        <button mat-raised-button type="submit" [disabled]="employeeForm.invalid"
+                class="my-2 me-2" color="primary">{{ editMode ? 'Anpassen' : 'Hinzufügen' }}</button>
 
-      <button mat-raised-button routerLink="/employee" class="my-2 ms-2" color="warn">Zurück</button>
-    </div>
+        <button mat-raised-button routerLink="/employee" class="my-2 ms-2" color="warn">Zurück</button>
+      </div>
 
-  </form>
-  <ng-container *ngFor="let knowledge of knowledgesOfEmployee$ | async">
-    <app-employee-knowledge [currentKnowledge]="knowledge"></app-employee-knowledge>
-  </ng-container>
+    </form>
+  </div>
 
-  <button mat-fab extended [hidden]="false">
-    <mat-icon>add</mat-icon>
-    Fähigkeit
-  </button>
+  <mat-divider></mat-divider>
+
+  <div class="my-5">
+    <h2>Neue Fähigkeit hinzufügen</h2>
+    <app-employee-knowledge [currentKnowledge]="emptyKnowledge" [filteredSkillsList$]="skillsWithHidden$"
+                            [isAddNewComponent]="true" (knowledgeSaved)="receiveAddKnowledge($event)"></app-employee-knowledge>
+  </div>
+
+  <mat-divider></mat-divider>
+
+  <div class="my-5">
+    <h2>Fähigkeiten des Mitarbeiters</h2>
+    <ng-container *ngFor="let knowledge of knowledgesOfEmployee$ | async">
+      <app-employee-knowledge [currentKnowledge]="knowledge" [filteredSkillsList$]="skillsWithHidden$"
+                              (knowledgeDeleted)="receiveDeleteKnowledge($event)" (knowledgeSaved)="receiveUpdateKnowledge($event)"></app-employee-knowledge>
+    </ng-container>
+  </div>
+
+
+
 </div>

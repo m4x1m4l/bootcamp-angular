@@ -3,8 +3,8 @@
   <mat-form-field>
     <mat-label>Fähigkeit</mat-label>
     <mat-select formControlName="skillId">
-      <ng-container *ngFor="let knowledge of knowledges$ | async">
-        <mat-option [value]="knowledge.skillId" >{{knowledge.skillId}}</mat-option>
+      <ng-container *ngFor="let skill of filteredSkillsList$ | async">
+        <mat-option [value]="skill.id" [disabled]="skill.disabled" >{{skill.name}} (id: {{skill.id}})</mat-option>
       </ng-container>
     </mat-select>
     <mat-error *ngIf="employeeKnowledgeForm.get('skillId')?.invalid && employeeKnowledgeForm.get('skillId')?.touched">
@@ -21,9 +21,9 @@
 
   <div class="m-2">
     <button mat-raised-button type="submit" [disabled]="employeeKnowledgeForm.invalid"
-            class="my-2 me-2" color="primary"> Speichern </button>
+            class="my-2 me-2" color="primary"> {{isAddNewComponent? "Hinzufügen":"Speichern"}} </button>
 
-    <button mat-raised-button class="my-2 ms-2" color="warn" (click)="onDelete()">Löschen</button>
+    <button mat-raised-button class="my-2 ms-2" color="warn" *ngIf="!isAddNewComponent" (click)="onDelete()">Löschen</button>
   </div>
 
 </form>

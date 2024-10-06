@@ -30,6 +30,7 @@ import {
 } from './page/employee/employee-edit/employee-knowledge/employee-knowledge.component';
 import {MatSliderModule} from "@angular/material/slider";
 import {MatIconModule} from "@angular/material/icon";
+import {MatListModule} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -45,27 +46,28 @@ import {MatIconModule} from "@angular/material/icon";
     EmployeeEditComponent,
     EmployeeKnowledgeComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    BrowserAnimationsModule,
-    MatToolbarModule,
-    MatButtonModule,
-    HttpClientModule,
-    MatTableModule,
-    FormsModule,
-    FormsModule,
-    MatDialogModule,
-    MatInputModule,
-    MatButtonToggleModule,
-    MatSidenavModule,
-    MatSelectModule,
-    MatDatepickerModule,
-    MatNativeDateModule,
-    ReactiveFormsModule,
-    MatSliderModule,
-    MatIconModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        BrowserAnimationsModule,
+        MatToolbarModule,
+        MatButtonModule,
+        HttpClientModule,
+        MatTableModule,
+        FormsModule,
+        FormsModule,
+        MatDialogModule,
+        MatInputModule,
+        MatButtonToggleModule,
+        MatSidenavModule,
+        MatSelectModule,
+        MatDatepickerModule,
+        MatNativeDateModule,
+        ReactiveFormsModule,
+        MatSliderModule,
+        MatIconModule,
+        MatListModule
+    ],
   providers: [
   ],
   bootstrap: [AppComponent]

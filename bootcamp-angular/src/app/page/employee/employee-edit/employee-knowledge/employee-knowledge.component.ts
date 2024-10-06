@@ -1,8 +1,8 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {Knowledge} from "../../model/knowledge";
-import {KnowledgeDataService} from "../../service/knowledge-data.service";
 import {Observable, of} from "rxjs";
+import {Skill} from "../../../skill/model/skill";
 
 @Component({
   selector: 'app-employee-knowledge',
@@ -15,41 +15,45 @@ export class EmployeeKnowledgeComponent {
   @Input() currentKnowledge: Knowledge = {
     experienceLevel: 5,
   }
-  //@Output die beiden Buttons?
+  @Input() filteredSkillsList$: Observable<Skill[]> = of([]);
+
+  @Input() isAddNewComponent: boolean = false;
+
+  @Output() knowledgeDeleted: EventEmitter<Knowledge> = new EventEmitter<Knowledge>();
+  @Output() knowledgeSaved: EventEmitter<Knowledge> = new EventEmitter<Knowledge>();
+
   employeeKnowledgeForm = new FormGroup({
     skillId: new FormControl(0, [Validators.required]),
     experienceLevel: new FormControl(0, [Validators.required]),
   });
-  knowledges$: Observable<Knowledge[]> = of([{
-    experienceLevel: 1,
-    skillId: 123
-  }, {
-    experienceLevel: 1,
-    skillId: 123
-  },{
-    experienceLevel: 1,
-    skillId: 123
-  }])
 
-  constructor(private knowledgeDataService: KnowledgeDataService) {
+
+
+  constructor() {
   }
 
 
   ngOnInit():void {
     this.employeeKnowledgeForm.patchValue(this.currentKnowledge);
-    this.knowledges$ = this.knowledgeDataService.knowledgeList$; //ist im constructor noch nicht vorhanden wegen input!
+    if(!this.isAddNewComponent){
+      this.employeeKnowledgeForm.get('skillId')?.disable();
+    }
+
   }
   onSubmit() {
-    //add or update?
+    const skillId = +this.employeeKnowledgeForm.get('skillId')!.value! ?? 0;
+    const experienceLevel = +this.employeeKnowledgeForm.get('experienceLevel')!.value! ?? 0;
+    const employeeId = 3;
 
+    this.knowledgeSaved.emit({
+      skillId,
+      experienceLevel,
+      employeeId
+    });
   }
 
   onDelete() {
-    console.log(this.currentKnowledge.employeeId)
-    console.log(this.employeeKnowledgeForm.get('skillId')?.value)
 
-    this.knowledgeDataService.deleteKnowledge(this.currentKnowledge.employeeId ?? 0,
-      this.employeeKnowledgeForm.get('skillId')?.value ?? 0).subscribe();
   }
 
 }

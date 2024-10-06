@@ -1,9 +1,7 @@
-import { Injectable } from '@angular/core';
+import {Injectable} from '@angular/core';
 import {BehaviorSubject, catchError, Observable, tap, throwError} from "rxjs";
-import {Employee} from "../model/employee";
 import {Knowledge} from "../model/knowledge";
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {Skill} from "../../skill/model/skill";
 
 @Injectable({
   providedIn: 'root'
@@ -38,11 +36,14 @@ export class KnowledgeDataService {
     );
   }
 
-  addKnowledge(knowledge: Knowledge): Observable<Knowledge> {
-    return this.http.post<Knowledge>(`${this.apiUrl}/knowledges`, knowledge).pipe(
+  addKnowledgeByEmployeeId(employeeId: number, knowledge: Knowledge): Observable<Knowledge> {
+    console.log(employeeId, knowledge)
+    //TODO warum wird das nicht geupdated im frontend?
+    return this.http.post<Knowledge>(`${this.apiUrl}/knowledges/${employeeId}`, knowledge).pipe(
       tap((newKnowledge: Knowledge) => {
         const updatedKnowledges = [...this._knowledgeList$.getValue(), newKnowledge];
         this._knowledgeList$.next(updatedKnowledges);
+        console.log(updatedKnowledges)
       }),
       catchError(this.handleError)
     );
